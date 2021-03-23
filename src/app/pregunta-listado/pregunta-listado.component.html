@@ -1,8 +1,11 @@
 <div>
-    <div *ngFor="let pregunta of preguntas">
-        <h2>{{pregunta.titulo}}</h2>
-        <p>
-            {{pregunta.publicacion}}
-        </p>
+    <div class="cursor-pointer" (click)="nuevaPregunta()">Nueva Pregunta</div>
+    <div *ngFor="let pregunta of preguntas, let id = index" >
+        <div class="cursor-pointer" (click)="modificarPregunta(id)">
+            <h2>{{pregunta.titulo}}</h2>
+            <p>
+                {{pregunta.publicacion}}
+            </p>
+        </div>
     </div>
 </div>

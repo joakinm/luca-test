@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { PreguntasService } from '../form-pregunta/preguntas.service';
 import { Pregunta } from '../models/pregunta.model';
@@ -11,9 +12,10 @@ import { Pregunta } from '../models/pregunta.model';
 export class PreguntaListadoComponent implements OnInit {
   public preguntas = new Array<Pregunta>();
   public subs = new Subscription();
-  constructor(private preguntasService: PreguntasService) { }
+  constructor(private preguntasService: PreguntasService, private router: Router) { }
 
   ngOnInit(): void {
+    this.preguntas = this.preguntasService.obtenerPreguntas();
     this.subs = this.preguntasService.preguntaCambios.subscribe(p => {
       this.preguntas = p
     });
@@ -22,5 +24,13 @@ export class PreguntaListadoComponent implements OnInit {
 
   ngOnDestroy() {
     this.subs.unsubscribe();
+  }
+
+  nuevaPregunta() {
+    this.router.navigate(['/preguntas']);
+  }
+
+  modificarPregunta(id: number,) {
+    this.router.navigate(['/preguntas/' + id]);
   }
 }

@@ -7,10 +7,8 @@ import { PreguntaListadoComponent } from './pregunta-listado/pregunta-listado.co
 const routes: Routes = [
   {path:'', redirectTo:'/listado', pathMatch:'full'},
   {path:'listado', component: PreguntaListadoComponent},
-  {path: 'preguntas',component: FormPreguntaComponent, children: [
-    {path: '', component: FormPreguntaComponent},
-    {path: ':id', component: FormPreguntaComponent}
-]}
+  {path: 'preguntas', component: FormPreguntaComponent},
+  {path: 'preguntas/:id', component: FormPreguntaComponent}
 ];
 
 @NgModule({

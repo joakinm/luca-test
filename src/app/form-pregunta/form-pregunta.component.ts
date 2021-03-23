@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Pregunta } from '../models/pregunta.model';
 import { PreguntasService } from './preguntas.service';
 
@@ -14,20 +15,27 @@ export class FormPreguntaComponent implements OnInit {
   public publicacion: string;
   public modoEdit = false;
   public preguntaIndex: number;
-  constructor(private preguntaService: PreguntasService) { }
+  
+  constructor(private preguntaService: PreguntasService, private router: Router, private rutaActiva: ActivatedRoute) { }
 
   ngOnInit(): void {
-    
+    this.preguntaIndex = +this.rutaActiva.snapshot.paramMap.get('id');
+    if (this.preguntaIndex === 0 || this.preguntaIndex > 0) {
+      this.modoEdit = true;
+    }
     this.initForm();
   }
 
-  private initForm(pregunta?: Pregunta) {
+  private initForm() {
     let titulo = '';
     let publicacion = '';
 
-    if(this.modoEdit) {
-      titulo = pregunta.titulo;
-      publicacion = pregunta.publicacion;
+    if (this.modoEdit) {
+      const pregunta = this.preguntaService.obtenerPreguntasXId(this.preguntaIndex);
+      if(pregunta) {
+        titulo = pregunta.titulo;
+        publicacion = pregunta.publicacion;
+      }
     }
 
     this.form = new FormGroup({
@@ -38,9 +46,13 @@ export class FormPreguntaComponent implements OnInit {
 
   public publicar() {
     if (this.modoEdit) {
-      this.preguntaService.modificarPreguntas(this.form.value,this.preguntaIndex);
+      this.preguntaService.modificarPreguntas(this.form.value, this.preguntaIndex);
     } else {
       this.preguntaService.agregarPregunta(this.form.value);
     }
+  }
+
+  public irAlListado() {
+    this.router.navigate(['/listado']);
   }
 }

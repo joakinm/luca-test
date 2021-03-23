@@ -19,4 +19,12 @@ export class PreguntasService {
     this.dataPreguntas[index] = preguntaAModificar;
     this.preguntaCambios.next(this.dataPreguntas.slice());
   }
+
+  public obtenerPreguntas() {
+    return this.dataPreguntas;
+  }
+
+  public obtenerPreguntasXId(id: number) {
+    return this.dataPreguntas[id];
+  }
 }
