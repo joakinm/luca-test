@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormPreguntaComponent } from './form-pregunta/form-pregunta.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PreguntaListadoComponent } from './pregunta-listado/pregunta-listado.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FormPreguntaComponent
+    FormPreguntaComponent,
+    PreguntaListadoComponent
   ],
   imports: [
     BrowserModule,

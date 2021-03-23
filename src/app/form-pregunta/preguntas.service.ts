@@ -7,7 +7,7 @@ import { Pregunta } from '../models/pregunta.model';
 })
 export class PreguntasService {
   private dataPreguntas = new Array<Pregunta>();
-  private preguntaCambios = new Subject<Array<Pregunta>>();
+  public preguntaCambios = new Subject<Array<Pregunta>>();
   constructor() { }
 
   public agregarPregunta(pregunta: Pregunta) {
