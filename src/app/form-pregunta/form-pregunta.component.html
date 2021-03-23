@@ -1,0 +1,19 @@
+<div>
+    <div class="d-flex">
+        <h1>Haz una pregunta</h1>
+
+    </div>
+    <form class="d-flex" [formGroup]="form">
+        <div>
+            <label for="titulo">Título de publicaci&oacute;n</label>
+            <input  type="text" name="titulo" id="titulo" formControlName="titulo" placeholder="Escribe tu título aquí" >
+            <span class="blockquote-footer" *ngIf="!form.get('titulo').valid && form.get('titulo').touched">Favor de ingresar un titulo</span>
+        </div>
+        <div>
+            <label for="publicacion">Publicaci&oacute;n</label>
+            <input type="text" name="publicacion" id="publicacion" formControlName="publicacion" placeholder="Escribe tu publicación aquí">
+            <span class="blockquote-footer" *ngIf="!form.get('publicacion').valid && form.get('publicacion').touched">Favor de ingresar un apellido</span>
+        </div>
+        <button type="submit" (click)="publicar()">Publicar</button>
+    </form>
+</div>
