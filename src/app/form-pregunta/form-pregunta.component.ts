@@ -20,7 +20,7 @@ export class FormPreguntaComponent implements OnInit {
 
   ngOnInit(): void {
     this.preguntaIndex = +this.rutaActiva.snapshot.paramMap.get('id');
-    if (this.preguntaIndex === 0 || this.preguntaIndex > 0) {
+    if (this.preguntaIndex > 0) {
       this.modoEdit = true;
     }
     this.initForm();
@@ -47,8 +47,11 @@ export class FormPreguntaComponent implements OnInit {
   public publicar() {
     if (this.modoEdit) {
       this.preguntaService.modificarPreguntas(this.form.value, this.preguntaIndex);
+      this.modoEdit = false;
+      this.initForm();
     } else {
       this.preguntaService.agregarPregunta(this.form.value);
+      this.initForm();
     }
   }
 

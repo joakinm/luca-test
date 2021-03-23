@@ -1,19 +1,25 @@
 <div>
-    <div class="cursor-pointer" (click)="irAlListado()">Volver al listado</div>
-    <div class="d-flex">
-        <h1>Haz una pregunta</h1>
+    <div class="d-flex header">
+        <div>
+            <h1>Haz una pregunta</h1>
+        </div>
+        <div class="close-x cursor-pointer" (click)="irAlListado()">X</div>
     </div>
-    <form class="d-flex" [formGroup]="form">
+    <form [formGroup]="form">
         <div class="inputs">
             <label for="titulo">Título de publicaci&oacute;n</label>
-            <input class="w-100" type="text" name="titulo" id="titulo" formControlName="titulo" placeholder="Escribe tu título aquí">
-            <span class="blockquote-footer" *ngIf="!form.get('titulo').valid && form.get('titulo').touched">Favor de ingresar un titulo</span>
+            <input class="input-data" type="text" name="titulo" id="titulo" formControlName="titulo" placeholder="Escribe tu título aquí">
+            <div>
+                <small class="blockquote-footer" *ngIf="!form.get('titulo').valid && form.get('titulo').touched">Favor de ingresar un titulo</small>
+            </div>
         </div>
         <div class="inputs">
             <label for="publicacion">Publicaci&oacute;n</label>
-            <input class="w-100" type="text" name="publicacion" id="publicacion" formControlName="publicacion" placeholder="Escribe tu publicación aquí">
-            <span class="blockquote-footer" *ngIf="!form.get('publicacion').valid && form.get('publicacion').touched">Favor de ingresar un apellido</span>
+            <input class="input-data" type="text" name="publicacion" id="publicacion" formControlName="publicacion" placeholder="Escribe tu publicación aquí">
+            <div>
+                <small class="blockquote-footer" *ngIf="!form.get('publicacion').valid && form.get('publicacion').touched">Favor de ingresar un apellido</small>
+            </div>
         </div>
-        <button type="submit" (click)="publicar()">{{modoEdit ? 'Modificar' : 'Publicar'}}</button>
+            <button type="submit" class="button-submit" (click)="publicar()" [disabled]="!form.valid">{{modoEdit ? 'Modificar' : 'Publicar'}}</button>
     </form>
 </div>

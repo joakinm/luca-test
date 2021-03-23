@@ -22,3 +22,41 @@
 .justify-content-between {
     justify-content: space-between;
 }
+
+.inputs {
+    width: 100%;
+    display: block;
+    padding: 10px;
+}
+
+.input-data {
+    width: 95%;
+    border-radius: 15px;
+    height: 30px;
+    border: 1px solid;
+    margin: 3px;
+}
+
+.button-submit {
+    height: 30px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    width: 70px;
+    justify-content: center;
+    border-color: blue;
+    background-color: #3843d0;
+    color: #ffffff;
+}
+
+.header {
+    justify-content: space-between;
+    align-items: center;
+    padding-right: 30px;
+    padding-left: 10px;
+    color: darkslategrey;
+}
+
+.close-x {
+    font-size: xx-large;
+}
